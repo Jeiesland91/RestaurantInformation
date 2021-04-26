@@ -1,0 +1,17 @@
+﻿@model Restaurant
+
+@{
+    ViewData["Title"] = "Delete Restaurant";
+}
+
+<h1 class="display-4">Delete Restaurant</h1>
+<ul class="list-group mb-2">
+    <li class="list-group-item">
+        <h4>@Model?.Name @Model?.Cuisine</h4>
+    </li>
+    <li class="list-group-item">
+        Chef: @Model?.Chef.FullName
+    </li>
+</ul>
+
+<partial name="_RestaurantLinkPartial" />

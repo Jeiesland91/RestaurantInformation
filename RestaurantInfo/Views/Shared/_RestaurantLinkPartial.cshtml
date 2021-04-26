@@ -1,0 +1,7 @@
+﻿@model Restaurant
+
+<form asp-action="Delete" method="post">
+    <input type="hidden" asp-for="RestaurantId" />
+    <button type="submit">Delete</button>
+    <my-link-button action="Index" controller="Home">Cancel</my-link-button>
+</form>

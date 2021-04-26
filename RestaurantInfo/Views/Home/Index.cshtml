@@ -1,0 +1,30 @@
+﻿@model IEnumerable<Restaurant>
+
+@{
+    ViewData["Title"] = "Restaurant info";
+}
+
+<div class="text-center">
+    <h1 class="display-4">Restaurant Info</h1>
+</div>
+
+<a asp-action="Add" asp-controller="Restaurant" class="ml-3">Add Restaurant</a>
+
+<table class="table">
+    <thead>
+    <tr><th>Name</th><th>Cuisine</th><th>Chef</th><th></th></tr>
+    </thead>
+    <tbody>
+    @foreach (Restaurant r in Model) {
+        <tr>
+            <td>@r.Name</td>
+            <td>@r.Cuisine</td>
+            <td>@r.Chef.FullName</td>
+            <td>
+                <my-link-button action="Edit" controller="Restaurant" id="@r.RestaurantId">Edit</my-link-button>
+                <my-link-button action="Delete" controller="Restaurant" id="@r.RestaurantId">Delete</my-link-button>
+            </td>
+        </tr>
+    }
+    </tbody>
+</table>

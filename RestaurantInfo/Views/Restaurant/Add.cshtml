@@ -1,0 +1,32 @@
+﻿@model Restaurant
+
+@{
+    ViewData["Title"] = $"{ViewBag.Operation} Restaurant";
+}
+
+<h1 class="display-4">@ViewBag.Operation Class</h1>
+
+<form asp-action="Add" method="post">
+    <div asp-validation-summary="All" class="text-danger"></div>
+    <div class="form-group">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Cuisine"></label>
+        <input asp-for="Cuisine" class="form-control" />
+    </div>
+    <div class="form-group">
+        <label asp-for="Chef"></label>
+        <select asp-for="ChefId" class="form-control"
+                asp-items="@(new SelectList(ViewBag.Chefs,"ChefId","FullName"))"></select>
+    </div>
+
+    @if (ViewBag.Operation == "Edit")
+    {
+        <input type="hidden" asp-for="RestaurantId" />
+    }
+
+    <button type="submit">@ViewBag.Operation</button>
+    <my-link-button action="Index" controller="Home">Cancel</my-link-button>
+</form>
